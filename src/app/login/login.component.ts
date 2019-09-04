@@ -7,7 +7,7 @@ import {AuthenticationService } from '../services/authentication.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss' ]
 })
 export class LoginComponent implements OnInit {
 
@@ -28,10 +28,7 @@ export class LoginComponent implements OnInit {
   });
 
   // reset login status
-    // this.authenticationService.logout();
-    // console.log(this.route.snapshot.queryParams['returnUrl']);
-    
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.authenticationService.logout();
     console.log('login page')
   }
  get f() { return this.loginForm.controls; }
@@ -48,8 +45,7 @@ export class LoginComponent implements OnInit {
          .subscribe(
              data => {
                console.log('lets see');
-               
-                //  this.router.navigate([this.returnUrl]);
+               this.router.navigate(['/dashboard']);
              },
              error => {
                  this.error = error;

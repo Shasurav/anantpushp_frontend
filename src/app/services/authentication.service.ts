@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -22,7 +22,10 @@ export class AuthenticationService {
     login(username: string, password: string) {
         console.log(username,password, typeof username, typeof password);
         
-        return this.http.post<any>('http://localhost:3000/user/login', { username, password })
+        let body = new HttpParams()
+        .set('contact', username)
+        .set('password', password)
+        return this.http.post<any>('http://localhost:3000/user/login', body)
             .pipe(map(user => {
                 console.log(user);
                 
