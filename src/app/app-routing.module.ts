@@ -5,9 +5,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrderComponent } from '../app/order/order.component';
 
 import { AuthGuard } from './gaurd/auth.gaurd'
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path : 'login', component : LoginComponent},
+  { path : 'registration', component : RegistrationComponent},
   { path : '', component : DashboardComponent 
   // , canActivate: [AuthGuard]
   , children : [{

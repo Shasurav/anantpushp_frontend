@@ -1,0 +1,35 @@
+.center {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card{
+      height: 400px;
+      width: 400px;
+      border-radius: 30px;
+      box-shadow: 0 0 10px 5px rgba(175, 175, 175, 0.493);
+      display: inline-block;
+    justify-content: center;
+    align-items: center;
+  }
+  .registration-form{
+    left: 50%;
+  }.center {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card{
+      height: 400px;
+      width: 400px;
+      border-radius: 30px;
+      box-shadow: 0 0 10px 5px rgba(175, 175, 175, 0.493);
+      display: inline-block;
+    justify-content: center;
+    align-items: center;
+  }
+  .registration-form{
+    left: 50%;
+  }

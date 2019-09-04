@@ -19,6 +19,10 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
+    registration(user:User){
+        return this.http.post('https://detailsofproject.free.beeceptor.com/register',user);
+      }
+      
     login(username: string, password: string) {
         console.log(username,password, typeof username, typeof password);
         

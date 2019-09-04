@@ -14,8 +14,9 @@ import { SideNavComponent } from './dashboard/side-nav/sidenav.component';
 
 import { ErrorInterceptor} from './gaurd/error.interceptor';
 import { JwtInterceptor } from './gaurd/jwt.interceptor';
-import { UserProfileComponent } from './dashboard/user-profile/user-profile.component';
+// import { UserProfileComponent } from './dashboard/user-profile/user-profile.component';
 import { OrderComponent } from './order/order.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 
@@ -25,8 +26,9 @@ import { OrderComponent } from './order/order.component';
     LoginComponent,
     DashboardComponent,
     SideNavComponent,
-    UserProfileComponent,
-    OrderComponent
+    // UserProfileComponent,
+    OrderComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
