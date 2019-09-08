@@ -1,0 +1,37 @@
+<div class="center">
+  <mat-card class="card">
+      <mat-card-header>
+          <mat-card-title>Registration</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <form class="registration-form" novalidate (ngSubmit)="registration()" 
+          [formGroup]="registrationForm">
+              <mat-form-field class="form-group">
+                  <input matInput class="form-control" placeholder="Name" formControlName="fullname">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="form-group">
+                  <input matInput class="form-control" type="number" placeholder="Phone Number" formControlName="phonenumber"
+                  (keypress)="numberOnly($event)">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="form-group">
+                  <input matInput class="form-control" placeholder="Address" formControlName="address">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="form-group">
+                  <input matInput class="form-control" placeholder="Password" formControlName="password"
+                      type="password">
+              </mat-form-field>
+              <br>
+              <mat-form-field class="form-group">
+                  <input matInput class="form-control" placeholder="Confirm Password"
+                      formControlName="confirmpassword" type="password">
+              </mat-form-field>
+          </form>
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button (click)="registration()" color="primary">Register</button>
+      </mat-card-actions>
+  </mat-card>
+</div>
