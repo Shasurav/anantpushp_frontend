@@ -1,9 +1,32 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <mat-nav-list>
+            <a [routerLink]="'/'">AnantPushp</a>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="!currentUser">
+            <a mat-list-item [routerLink]="'/registration'"> Register Here</a>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="!currentUser">
+            <a mat-list-item [routerLink]="'/login'"> Login</a>
+        </mat-nav-list>
+        <span class="spacer"></span>
+        <mat-nav-list *ngIf="currentUser">
+            <a mat-list-item (click)="logout()"> Logout</a>
+        </mat-nav-list>
+        <div *ngIf="currentUser">
+            <a routerLink="/">Home</a>
+            <a (click)="logout()">Logout</a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
         <div class="navbar-nav">
             <a class="nav-item nav-link" routerLink="/">Home</a>
             <a class="nav-item nav-link" (click)="logout()">Logout</a>
         </div>
-    </nav>
-    <router-outlet></router-outlet>
-    
+    </nav> -->
+<router-outlet></router-outlet>

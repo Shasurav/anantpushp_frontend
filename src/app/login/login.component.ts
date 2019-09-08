@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required,Validators.minLength(10)]],
       password: ['', Validators.required]
   });
 
@@ -52,4 +52,19 @@ export class LoginComponent implements OnInit {
                  this.loading = false;
              });
  }
+ numberOnly(event): boolean {
+  const charCode = (event.which) ? event.which : event.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
+}
+onSearchChange(username : string) { 
+  if(username.length > 10){
+    this.loginForm.get('username').setValue(username.slice(0,10));
+  }
+} 
+goToRegistration(){
+  this.router.navigate(['/registration']);
+}
 }

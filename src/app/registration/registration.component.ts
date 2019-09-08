@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { AuthenticationService } from '../services/authentication.service';
+import { ErrorStateMatcher } from '@angular/material';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit{
 
   user: User;
   submitted: boolean= false;
@@ -21,16 +22,18 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
       fullname: ['', Validators.required],
-      phonenumber: ['',Validators.required],
+      phonenumber: ['',[Validators.required,Validators.minLength(10)]],
       address: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmpassword: ['', Validators.required]
-    })
+      passwordGroup : this.formBuilder.group({
+         password: ['', Validators.required],
+         confirmpassword: ['',Validators.required]},{validator:this.passwordMatcher})
+    });
   }
 
   get f() { return this.registrationForm.controls; }
 
   registration(){
+    this.router.navigate(['/login']);
     this.submitted = true;
     if(this.registrationForm.invalid){
       return;
@@ -38,8 +41,19 @@ export class RegistrationComponent implements OnInit {
     this.loading = true;
     this.authenticationService.registration(this.registrationForm.value)
     .subscribe(data => console.log(this.registrationForm.value))
-
+    
   }
+passwordMatcher(passwordGroup: FormGroup) {
+  {
+    let val = passwordGroup.controls['password'].value;
+    let val2 = passwordGroup.controls['confirmpassword'].value;
+    if(val !==val2){
+      return {mismatch: true};
+    }
+    else
+    return null;
+  }
+}
 
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
@@ -48,4 +62,10 @@ export class RegistrationComponent implements OnInit {
     }
     return true;
   }
+  onSearchChange(phonenumber : string) { 
+    if(phonenumber.length > 10){
+      this.registrationForm.get('phonenumber').setValue(phonenumber.slice(0,10));
+    }
+  } 
+ 
 }
