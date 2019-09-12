@@ -20,6 +20,7 @@ export class AuthenticationService {
     }
 
     registration(user:User){
+        console.log(user)
         return this.http.post('https://detailsofproject.free.beeceptor.com/register',user);
       }
       

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { AuthenticationService } from '../services/authentication.service';
@@ -43,17 +43,11 @@ export class RegistrationComponent implements OnInit{
     .subscribe(data => console.log(this.registrationForm.value))
     
   }
-passwordMatcher(passwordGroup: FormGroup) {
-  {
-    let val = passwordGroup.controls['password'].value;
-    let val2 = passwordGroup.controls['confirmpassword'].value;
-    if(val !==val2){
-      return {mismatch: true};
-    }
-    else
-    return null;
-  }
-}
+passwordMatcher: ValidatorFn = (passwordGroup: FormGroup): ValidationErrors | null => {
+  const password = passwordGroup.get('password');
+  const confirmpassword = passwordGroup.get('confirmpassword');
+  return password && confirmpassword && password.value === confirmpassword.value ? { 'identityRevealed': true } : null;
+};
 
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
