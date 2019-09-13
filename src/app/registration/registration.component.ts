@@ -22,11 +22,14 @@ export class RegistrationComponent implements OnInit{
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
       fullname: ['', Validators.required],
-      phonenumber: ['',[Validators.required,Validators.minLength(10)]],
+      phonenumber: ['',[Validators.required]],
       address: ['', Validators.required],
       passwordGroup : this.formBuilder.group({
          password: ['', Validators.required],
-         confirmpassword: ['',Validators.required]},{validator:this.passwordMatcher})
+         confirmpassword: ['',Validators.required]},{validator:this.passwordMatcher}),
+      ifsc: ['', Validators.required],
+      accountnumber: ['', Validators.required],
+      bankname: ['', Validators.required]
     });
   }
 
@@ -40,7 +43,9 @@ export class RegistrationComponent implements OnInit{
     }
     this.loading = true;
     this.authenticationService.registration(this.registrationForm.value)
-    .subscribe(data => console.log(this.registrationForm.value))
+    .subscribe(data => {console.log(data)
+      this.router.navigateByUrl('/login');
+    })
     
   }
 passwordMatcher: ValidatorFn = (passwordGroup: FormGroup): ValidationErrors | null => {
@@ -49,17 +54,17 @@ passwordMatcher: ValidatorFn = (passwordGroup: FormGroup): ValidationErrors | nu
   return password && confirmpassword && password.value === confirmpassword.value ? { 'identityRevealed': true } : null;
 };
 
-  numberOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
-  }
-  onSearchChange(phonenumber : string) { 
-    if(phonenumber.length > 10){
-      this.registrationForm.get('phonenumber').setValue(phonenumber.slice(0,10));
-    }
-  } 
+  // numberOnly(event): boolean {
+  //   const charCode = (event.which) ? event.which : event.keyCode;
+  //   if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
+  // onSearchChange(phonenumber : string) { 
+  //   if(phonenumber.length > 10){
+  //     this.registrationForm.get('phonenumber').setValue(phonenumber.slice(0,10));
+  //   }
+  // } 
  
 }

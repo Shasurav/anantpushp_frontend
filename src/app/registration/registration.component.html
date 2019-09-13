@@ -10,8 +10,10 @@
             </mat-form-field>
             <br>
             <mat-form-field>
-                <input matInput class="form-control" type="tel" placeholder="Phone Number" formControlName="phonenumber"
-                    (keypress)="numberOnly($event)" (input)="onSearchChange($event.target.value)" />
+                <!-- <input matInput class="form-control" type="tel" placeholder="Phone Number" formControlName="phonenumber"
+                    (keypress)="numberOnly($event)" (input)="onSearchChange($event.target.value)" /> -->
+                <input matInput class="form-control" type="tel" placeholder="Phone Number"
+                    formControlName="phonenumber" />
                 <mat-error *ngIf="registrationForm.get('phonenumber').errors?.required">10 digit phone no is required
                 </mat-error>
                 <mat-error *ngIf="registrationForm.get('phonenumber').errors?.minlength">
@@ -21,6 +23,23 @@
             <mat-form-field>
                 <input matInput class="form-control" placeholder="Address" formControlName="address">
                 <mat-error *ngIf="registrationForm.get('address').errors?.required">Address is required</mat-error>
+            </mat-form-field>
+            <br>
+            <div>bank account details:</div>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="IFSC Code" formControlName="ifsc">
+                <mat-error *ngIf="registrationForm.get('ifsc').errors?.required">IFSC Code is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="Account Number" formControlName="accountnumber">
+                <mat-error *ngIf="registrationForm.get('accountnumber').errors?.required">Account Number is required
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="Bank Name" formControlName="bankname">
+                <mat-error *ngIf="registrationForm.get('bankname').errors?.required">Bank Name is required</mat-error>
             </mat-form-field>
             <br>
             <div formGroupName="passwordGroup">
@@ -40,7 +59,8 @@
                 </mat-form-field>
                 <mat-error
                     *ngIf="!registrationForm.get('passwordGroup').errors?.identityRevealed && 
-                registrationForm.get('passwordGroup.confirmpassword').dirty && registrationForm.get('passwordGroup.confirmpassword').value.length>2" style="font-size:10px;">
+                registrationForm.get('passwordGroup.confirmpassword').dirty && registrationForm.get('passwordGroup.confirmpassword').value.length>2"
+                    style="font-size:10px;">
                     password and confirm password
                     doesn't match</mat-error>
             </div>
@@ -48,6 +68,6 @@
     </mat-card-content>
 
     <mat-card-actions class="button">
-        <button mat-raised-button color="primary">Register</button>
+        <button mat-raised-button color="primary" (click)="registration()">Register</button>
     </mat-card-actions>
 </mat-card>
