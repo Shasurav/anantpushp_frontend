@@ -1,37 +1,73 @@
-<div class="center">
-  <mat-card class="card">
-      <mat-card-header>
-          <mat-card-title>Registration</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-          <form class="registration-form" novalidate (ngSubmit)="registration()" 
-          [formGroup]="registrationForm">
-              <mat-form-field class="form-group">
-                  <input matInput class="form-control" placeholder="Name" formControlName="fullname">
-              </mat-form-field>
-              <br>
-              <mat-form-field class="form-group">
-                  <input matInput class="form-control" type="number" placeholder="Phone Number" formControlName="phonenumber"
-                  (keypress)="numberOnly($event)">
-              </mat-form-field>
-              <br>
-              <mat-form-field class="form-group">
-                  <input matInput class="form-control" placeholder="Address" formControlName="address">
-              </mat-form-field>
-              <br>
-              <mat-form-field class="form-group">
-                  <input matInput class="form-control" placeholder="Password" formControlName="password"
-                      type="password">
-              </mat-form-field>
-              <br>
-              <mat-form-field class="form-group">
-                  <input matInput class="form-control" placeholder="Confirm Password"
-                      formControlName="confirmpassword" type="password">
-              </mat-form-field>
-          </form>
-      </mat-card-content>
-      <mat-card-actions>
-          <button mat-raised-button (click)="registration()" color="primary">Register</button>
-      </mat-card-actions>
-  </mat-card>
-</div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Registration</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form novalidate (ngSubmit)="registration()" [formGroup]="registrationForm">
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="Name" formControlName="fullname">
+                <mat-error *ngIf="registrationForm.get('fullname').errors?.required">Name is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <!-- <input matInput class="form-control" type="tel" placeholder="Phone Number" formControlName="phonenumber"
+                    (keypress)="numberOnly($event)" (input)="onSearchChange($event.target.value)" /> -->
+                <input matInput class="form-control" type="tel" placeholder="Phone Number"
+                    formControlName="phonenumber" />
+                <mat-error *ngIf="registrationForm.get('phonenumber').errors?.required">10 digit phone no is required
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('phonenumber').errors?.minlength">
+                    Please enter 10 digits phone number.</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="Address" formControlName="address">
+                <mat-error *ngIf="registrationForm.get('address').errors?.required">Address is required</mat-error>
+            </mat-form-field>
+            <br>
+            <div>bank account details:</div>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="IFSC Code" formControlName="ifsc">
+                <mat-error *ngIf="registrationForm.get('ifsc').errors?.required">IFSC Code is required</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="Account Number" formControlName="accountnumber">
+                <mat-error *ngIf="registrationForm.get('accountnumber').errors?.required">Account Number is required
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="Bank Name" formControlName="bankname">
+                <mat-error *ngIf="registrationForm.get('bankname').errors?.required">Bank Name is required</mat-error>
+            </mat-form-field>
+            <br>
+            <div formGroupName="passwordGroup">
+                <mat-form-field>
+                    <input matInput class="form-control" placeholder="Password" formControlName="password"
+                        type="password">
+                    <mat-error *ngIf="registrationForm.get('passwordGroup.password').errors?.required">password is
+                        required</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput class="form-control" placeholder="Confirm Password"
+                        formControlName="confirmpassword" type="password">
+                    <mat-error *ngIf="registrationForm.get('passwordGroup.confirmpassword').errors?.required">confirm
+                        password is
+                        required</mat-error>
+                </mat-form-field>
+                <mat-error
+                    *ngIf="!registrationForm.get('passwordGroup').errors?.identityRevealed && 
+                registrationForm.get('passwordGroup.confirmpassword').dirty && registrationForm.get('passwordGroup.confirmpassword').value.length>2"
+                    style="font-size:10px;">
+                    password and confirm password
+                    doesn't match</mat-error>
+            </div>
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions class="button">
+        <button mat-raised-button color="primary" (click)="registration()">Register</button>
+    </mat-card-actions>
+</mat-card>

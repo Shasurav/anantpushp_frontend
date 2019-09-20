@@ -1,4 +1,4 @@
-.center {
+/* .center {
     height: 80vh;
     display: flex;
     justify-content: center;
@@ -6,24 +6,7 @@
   }
   .card{
       height: 400px;
-      width: 400px;
-      border-radius: 30px;
-      box-shadow: 0 0 10px 5px rgba(175, 175, 175, 0.493);
-      display: inline-block;
-    justify-content: center;
-    align-items: center;
-  }
-  .registration-form{
-    left: 50%;
-  }.center {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .card{
-      height: 400px;
-      width: 400px;
+      width: auto;
       border-radius: 30px;
       box-shadow: 0 0 10px 5px rgba(175, 175, 175, 0.493);
       display: inline-block;
@@ -33,3 +16,46 @@
   .registration-form{
     left: 50%;
   }
+  .card-header, .card-content
+  {
+    position: relative;
+    left: 30%;
+  }
+  .card-action{
+    position: relative;
+    left: 40%;
+  } */
+  :host {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0px;
+  }
+  .mat-card:not([class*=mat-elevation-z]) {
+    border-radius: 30px;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,1), 
+                0 1px 1px 0 rgba(0,0,0,1), 
+                0 1px 3px 0 rgba(0,0,0,1);
+}
+  .mat-form-field {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  mat-card-header,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+ 
