@@ -10,7 +10,7 @@ import { ok } from 'assert';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    show:string;
+    show: string;
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
@@ -23,40 +23,36 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    registration(registration: Registration){
+    registration(registration: Registration) {
         console.log(registration);
-        let body = new HttpParams()
-        .set('contact',registration.phonenumber)
+        const body = new HttpParams()
+        .set('contact', registration.phonenumber)
         .set('password', registration.password)
         .set('name', registration.fullname)
         .set('address', registration.address)
         .set('ifsc', registration.ifsc)
         .set('account_number', registration.accountnumber)
-        .set('bank_name', registration.bankname)
-        return this.http.post<any>('http://3.17.148.164:3000/user/signup',body)
+        .set('bank_name', registration.bankname);
+        return this.http.post<any>('http://3.17.148.164/user/signup', body)
         .pipe(map(registration => {
             console.log(registration);
-            if(registration.find(x => x.contact === registration.contact)){
+            if ( registration.find(x => x.contact === registration.contact)) {
                 this.show = registration.contact;
-                console.log(this.show)
+                console.log(this.show);
             }
             registration.push(body);
             localStorage.setItem('newUser', JSON.stringify(registration));
         }
         ));
       }
-      
     login(username: string, password: string) {
-        console.log(username,password, typeof username, typeof password);
-        
-        let body = new HttpParams()
+        const body = new HttpParams()
         .set('contact', username)
-        .set('password', password)
+        .set('password', password);
         // return this.http.post<any>('http://localhost:3000/user/login', body)
-        return this.http.post<any>('http://3.17.148.164:3000/user/login', body)
+        return this.http.post<any>('http://3.17.148.164/user/login', body)
             .pipe(map(user => {
                 console.log(user);
-                
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes

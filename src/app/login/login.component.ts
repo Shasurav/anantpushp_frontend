@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
-import {AuthenticationService } from '../services/authentication.service'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error = '';
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, 
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
               private router: Router, private authenticationService: AuthenticationService) { }
 
 
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
 
   // reset login status
     this.authenticationService.logout();
-    console.log('login page')
   }
  get f() { return this.loginForm.controls; }
 
@@ -44,8 +43,8 @@ export class LoginComponent implements OnInit {
          .pipe(first())
          .subscribe(
              data => {
-               console.log('lets see');
-               this.router.navigateByUrl('/dashboard');
+              //  console.log('lets see');
+               this.router.navigateByUrl('/');
              },
              error => {
                  this.error = error;
@@ -59,12 +58,12 @@ export class LoginComponent implements OnInit {
 //   }
 //   return true;
 // }
-// onSearchChange(username : string) { 
+// onSearchChange(username : string) {
 //   if(username.length > 10){
 //     this.loginForm.get('username').setValue(username.slice(0,10));
 //   }
-// } 
-goToRegistration(){
+// }
+goToRegistration() {
   this.router.navigate(['/registration']);
 }
 }

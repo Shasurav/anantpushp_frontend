@@ -10,8 +10,8 @@ import { RegistrationComponent } from './registration/registration.component';
 const routes: Routes = [
   { path : 'login', component : LoginComponent},
   { path : 'registration', component : RegistrationComponent},
-  { path : 'dashboard', component : DashboardComponent 
-  // , canActivate: [AuthGuard]
+  { path : '', component : DashboardComponent 
+  , canActivate: [AuthGuard]
   , children : [{
     path : 'order', component : OrderComponent
     }]
