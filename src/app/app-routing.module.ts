@@ -6,16 +6,21 @@ import { OrderComponent } from '../app/order/order.component';
 
 import { AuthGuard } from './gaurd/auth.gaurd'
 import { RegistrationComponent } from './registration/registration.component';
+import { ItemsVisualComponent } from './items/items-visual/items-visual.component';
+import { AddItemComponent } from './items/add-item/add-item.component';
 
 const routes: Routes = [
   { path : 'login', component : LoginComponent},
   { path : 'registration', component : RegistrationComponent},
   { path : '', component : DashboardComponent 
-  , canActivate: [AuthGuard]
+  // , canActivate: [AuthGuard]
   , children : [{
     path : 'order', component : OrderComponent
     }]
-  }
+  },
+  {path : 'item', component: ItemsVisualComponent},
+  {path : 'add', component: AddItemComponent}
+
 ];
 
 @NgModule({

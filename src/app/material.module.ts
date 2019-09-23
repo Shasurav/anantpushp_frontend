@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import {MatCardModule, MatInputModule, 
     MatButtonModule , MatIconModule, MatSidenavModule, 
-    MatListModule,MatDividerModule} from '@angular/material';
+    MatListModule,MatDividerModule,  MatDialogModule,
+  } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 const modules = [
   MatCardModule,
@@ -18,7 +20,9 @@ const modules = [
   MatDividerModule,
   MatPaginatorModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
+  MatDialogModule,
+  MatFileUploadModule
 ];
 
 @NgModule({

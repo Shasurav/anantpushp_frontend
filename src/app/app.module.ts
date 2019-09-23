@@ -17,7 +17,9 @@ import { JwtInterceptor } from './gaurd/jwt.interceptor';
 // import { UserProfileComponent } from './dashboard/user-profile/user-profile.component';
 import { OrderComponent } from './order/order.component';
 import { RegistrationComponent } from './registration/registration.component';
-
+import { ItemsVisualComponent } from './items/items-visual/items-visual.component';
+import { AddItemComponent } from './items/add-item/add-item.component';
+import {ProductService} from './services/api/product.service';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { RegistrationComponent } from './registration/registration.component';
     SideNavComponent,
     // UserProfileComponent,
     OrderComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ItemsVisualComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import { RegistrationComponent } from './registration/registration.component';
     BrowserAnimationsModule
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-                { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+                { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+                ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

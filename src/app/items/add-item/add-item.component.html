@@ -1,0 +1,57 @@
+<!-- <img [src]="url" height="200"> <br/>
+<form (ngSubmit)="onSubmit()" enctype="multipart/form-data"> -->
+
+<!-- <input type="file" name="file" formControlName="image" id="file" (change)="onFileChanged($event)" />  -->
+<!--<button (click)="onUpload()">upload</button>
+</form> -->
+<mat-dialog-content>
+    <form [formGroup]="addItem" enctype="multipart/form-data">
+        <h1 mat-dialog-title>Hi, Please add item</h1>
+        <div>
+            <p>
+            <input type="file" name="file"  id="file" (change)="onFileChanged($event)" />
+            </p>
+            <p>
+            <input type="hidden" name="file" formControlName="photo" id="file" (change)="onFileChanged($event)" />
+                </p>
+            <p>
+                <img [src]="url" height="200"> <br />
+
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="name" formControlName="item_name">
+                    <mat-error>Please provide item name</mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="number" matInput placeholder="price" formControlName="price">
+                    <mat-error>Please add price for a item</mat-error>
+                </mat-form-field>
+            </p>
+            <!-- <p>
+<mat-form-field>
+    <input type="file" (change)="onFileChanged($event)" matInput placeholder="image" formControlName="image"/>
+</mat-form-field>
+</p> -->
+
+            <!-- <p>
+        <button (click)="fileInput.click()">
+                <mat-icon>library_add</mat-icon>
+                <span>Select</span>
+                <input #fileInput type="file" (change)="onFileChanged($event)" formControlName="image" style="display:none;" />
+              </button>
+</p> -->
+            <p>
+                <mat-form-field>
+                    <input type="number" matInput placeholder="stock" formControlName="stock">
+                    <mat-error>Please add available stock number</mat-error>
+                </mat-form-field>
+            </p>
+        </div>
+        <mat-card-actions class="button">
+            <button mat-raised-button type="submit" color="primary" (click)="onUpload()">upload</button>
+        </mat-card-actions>
+    </form>
+</mat-dialog-content>

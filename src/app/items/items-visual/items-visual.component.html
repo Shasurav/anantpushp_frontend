@@ -1,0 +1,28 @@
+        <!-- <p>here</p> -->
+        <div layout="row">
+            <div *ngFor="let ar of arr; let i = index" layout="column" flex-xs="" flex-gt-xs="50">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            <span class="mat-headline">{{ar.NAME}}</span>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <!-- <img mat-card-image src="http;//localhost:3000/upload/" alt={{ar.NAME}}> -->
+                    <mat-card-actions layout="row" layout-align="start center">
+                        <button>Action 1</button>
+                        <button>Action 2</button>
+                    </mat-card-actions>
+                    <mat-card-content>
+                        <p>
+                            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                            two most important words in Ernest Greene's musical language: feel it. It's a simple
+                            request, as
+                            well...
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <button mat-fab (click)="openDialog()" color="primary" class="spacer">
+                <mat-icon aria-hidden="false" aria-label="add icon">add</mat-icon>
+            </button>
+        </div>
