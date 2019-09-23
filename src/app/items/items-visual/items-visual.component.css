@@ -1,4 +1,23 @@
 .spacer {
-    position: relative;
-    left: 93%;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  margin: 5px;
+  }
+  #image{
+    width: 90%;
+    height: 90%;
+    
+  }
+  .centre{
+    position: absolute;
+    left: 50%;
+    transform:translate(-50%)
+  }
+  #img{
+    width: 150px;
+    height: 150px;
+  }
+  mat-card-header{
+    margin: 10px; 
   }

@@ -1,0 +1,95 @@
+{
+    "message": "all products",
+    "product": [
+        {
+            "_id": "5d8743d562026e6177487cbd",
+            "Item_Id": "5d8743d562026e6177487cbc",
+            "NAME": "bhindi",
+            "Price": 34,
+            "Image": "Screenshot 2019-09-18 at 1.20.58 PM.png",
+            "Stock": 12,
+            "__v": 0,
+            "id": "5d8743d562026e6177487cbd"
+        },
+        {
+            "_id": "5d8754c14471d86217caacc5",
+            "Item_Id": "5d8754c14471d86217caacc4",
+            "NAME": "saag",
+            "Price": 34,
+            "Image": "Screenshot 2019-09-08 at 12.01.14 PM.png",
+            "Stock": 12,
+            "__v": 0,
+            "id": "5d8754c14471d86217caacc5"
+        },
+        {
+            "_id": "5d8847c00375046d0a7ff546",
+            "Item_Id": "5d8847c00375046d0a7ff545",
+            "NAME": "123",
+            "Price": 123,
+            "Image": "Screenshot 2019-09-08 at 12.01.14 PM.png",
+            "Stock": 123,
+            "__v": 0,
+            "id": "5d8847c00375046d0a7ff546"
+        },
+        {
+            "_id": "5d8848d80375046d0a7ff548",
+            "Item_Id": "5d8848d80375046d0a7ff547",
+            "NAME": "123",
+            "Price": 123456,
+            "Image": "Screenshot 2019-09-08 at 12.01.14 PM.png",
+            "Stock": 1,
+            "__v": 0,
+            "id": "5d8848d80375046d0a7ff548"
+        },
+        {
+            "_id": "5d884b6c0375046d0a7ff54a",
+            "Item_Id": "5d884b6c0375046d0a7ff549",
+            "NAME": "screenshot",
+            "Price": 1,
+            "Image": "Screenshot 2019-09-08 at 12.01.14 PM.png",
+            "Stock": 1,
+            "__v": 0,
+            "id": "5d884b6c0375046d0a7ff54a"
+        },
+        {
+            "_id": "5d88506a0375046d0a7ff54c",
+            "Item_Id": "5d88506a0375046d0a7ff54b",
+            "NAME": "screenshot",
+            "Price": 1,
+            "Image": "Screenshot 2019-09-18 at 1.20.58 PM.png",
+            "Stock": 1,
+            "__v": 0,
+            "id": "5d88506a0375046d0a7ff54c"
+        },
+        {
+            "_id": "5d8854990375046d0a7ff54e",
+            "Item_Id": "5d8854990375046d0a7ff54d",
+            "NAME": "ghjh",
+            "Price": 6788,
+            "Image": "Screenshot 2019-09-18 at 1.20.58 PM.png",
+            "Stock": 57,
+            "__v": 0,
+            "id": "5d8854990375046d0a7ff54e"
+        },
+        {
+            "_id": "5d885d7c0375046d0a7ff550",
+            "Item_Id": "5d885d7c0375046d0a7ff54f",
+            "NAME": "12",
+            "Price": 12,
+            "Image": "Screenshot 2019-09-18 at 1.20.58 PM.png",
+            "Stock": 2,
+            "__v": 0,
+            "id": "5d885d7c0375046d0a7ff550"
+        },
+        {
+            "_id": "5d886cc81636286fb124eaeb",
+            "Item_Id": "5d886cc81636286fb124eaea",
+            "NAME": "123",
+            "Price": 123,
+            "Image": "/Users/shashank/Desktop/AnantPushp/anantpushp_backend/Routes/uploads/images/Screenshot 2019-09-18 at 1.20.58 PM.png",
+            "Stock": 123,
+            "__v": 0,
+            "id": "5d886cc81636286fb124eaeb"
+        }
+    ]
+}

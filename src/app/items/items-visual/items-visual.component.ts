@@ -9,21 +9,21 @@ import { ProductService } from '../../services/api/product.service';
   styleUrls: ['./items-visual.component.css']
 })
 export class ItemsVisualComponent implements OnInit {
-
-  arr = [];
+  itemdetails = {};
+  searchItem: string;
   constructor(public dialog: MatDialog , private productService: ProductService) { }
 
   ngOnInit() {
     this.productService.getProducts().subscribe((res:any) => {
-          this.arr = res.product ;
-
-          
+          this.itemdetails = res;
+          console.log(this.itemdetails);     
     })
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddItemComponent, {
-      width: 'auto',
+      width: '500px',
+      height: '500px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
