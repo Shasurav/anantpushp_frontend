@@ -14,9 +14,10 @@ const routes: Routes = [
   { path : 'registration', component : RegistrationComponent},
   { path : '', component : DashboardComponent 
   // , canActivate: [AuthGuard]
-  , children : [{
-    path : 'order', component : OrderComponent
-    }]
+  , children : [
+    {path : 'order', component : OrderComponent},
+    {path : '', component : ItemsVisualComponent},
+  ]
   },
   {path : 'item', component: ItemsVisualComponent},
   {path : 'add', component: AddItemComponent}

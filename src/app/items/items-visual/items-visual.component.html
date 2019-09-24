@@ -1,19 +1,25 @@
 <!-- <p>here</p> -->
-<mat-card-title>{{itemdetails.message}} <input type="text" placeholder="Search any item name" [(ngModel)]="searchItem">
+<mat-card-title>
+    <input type="text" placeholder="Search any item name" [(ngModel)]="searchItem">
 </mat-card-title>
-<mat-grid-list cols="4" rowHeight="2:2">
+<mat-grid-list cols="4" rowHeight="370px">
     <mat-grid-tile *ngFor="let i of itemdetails.product | searchitem: searchItem ;  let i=index">
         <mat-card id="image">
             <div class="centre">
-            <mat-card-header><mat-card-title>
-                {{i.NAME}}
-            </mat-card-title></mat-card-header>
-            <mat-card-content>
-            <img mat-card-image id="img" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="{{i.NAME}}">
-               <span>Price: {{i.Price}}</span> &nbsp;
-               <span>Stock: {{i.Stock}}</span>
+                <mat-card-header>
+                    <mat-card-title>
+                        {{i.NAME}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <img mat-card-image id="img" src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                        alt="{{i.NAME}}">
+                </mat-card-content>
+                <mat-card-content>
+                <span>Price: {{i.Price}}</span> <br>
+                <span>Stock: {{i.Stock}}</span>
             </mat-card-content>
-        </div>
+            </div>
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>

@@ -15,8 +15,8 @@
     transform:translate(-50%)
   }
   #img{
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
   }
   mat-card-header{
     margin: 10px; 
