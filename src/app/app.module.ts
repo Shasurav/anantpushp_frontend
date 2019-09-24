@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MaterialModule} from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +20,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ItemsVisualComponent } from './items/items-visual/items-visual.component';
 import { AddItemComponent } from './items/add-item/add-item.component';
 import {ProductService} from './services/api/product.service';
+import { SearchitemPipe } from './filter/searchitem.pipe';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {ProductService} from './services/api/product.service';
     OrderComponent,
     RegistrationComponent,
     ItemsVisualComponent,
-    AddItemComponent
+    AddItemComponent,
+    SearchitemPipe
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import {ProductService} from './services/api/product.service';
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
                 { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

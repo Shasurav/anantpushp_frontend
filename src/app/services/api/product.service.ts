@@ -17,6 +17,7 @@ export class ProductService {
   }
 
   getProducts() {
-    return this.http.get('http://localhost:3000/item/products');
+    // return this.http.get('http://localhost:3000/item/products');
+    return this.http.get("assets\\item.json");
   }
 }

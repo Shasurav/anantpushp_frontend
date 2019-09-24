@@ -4,7 +4,8 @@
 <!-- <input type="file" name="file" formControlName="image" id="file" (change)="onFileChanged($event)" />  -->
 <!--<button (click)="onUpload()">upload</button>
 </form> -->
-<mat-dialog-content>
+<div class="centre">
+<mat-dialog-content >
     <form [formGroup]="addItem" enctype="multipart/form-data">
         <h1 mat-dialog-title>Hi, Please add item</h1>
         <div>
@@ -55,3 +56,4 @@
         </mat-card-actions>
     </form>
 </mat-dialog-content>
+</div>
