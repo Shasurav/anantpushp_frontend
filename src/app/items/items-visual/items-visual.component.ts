@@ -30,5 +30,17 @@ export class ItemsVisualComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
-
+  edit(e){
+    const dialogRef = this.dialog.open(AddItemComponent, {
+      width: '500px',
+      height: '500px',
+      data : e
+    });
+    console.log(e);
+    
+  }
+  delete(e){
+    console.log(e);
+    
+  }
 }

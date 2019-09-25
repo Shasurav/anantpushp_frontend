@@ -2,7 +2,7 @@
 <mat-card-title>
     <input type="text" placeholder="Search any item name" [(ngModel)]="searchItem">
 </mat-card-title>
-<mat-grid-list cols="4" rowHeight="370px">
+<mat-grid-list cols="4" rowHeight="450px">
     <mat-grid-tile *ngFor="let i of itemdetails.product | searchitem: searchItem ;  let i=index">
         <mat-card id="image">
             <div class="centre">
@@ -19,6 +19,10 @@
                 <span>Price: {{i.Price}}</span> <br>
                 <span>Stock: {{i.Stock}}</span>
             </mat-card-content>
+            <mat-card-actions>
+                    <button mat-button (click)="edit(i)">Edit</button>
+                    <button mat-button (click)="delete(i)">Delete</button>
+                  </mat-card-actions>
             </div>
         </mat-card>
     </mat-grid-tile>
