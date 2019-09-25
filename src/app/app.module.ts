@@ -21,6 +21,7 @@ import { ItemsVisualComponent } from './items/items-visual/items-visual.componen
 import { AddItemComponent } from './items/add-item/add-item.component';
 import {ProductService} from './services/api/product.service';
 import { SearchitemPipe } from './filter/searchitem.pipe';
+import { DeleteDialogComponent } from './items/delete-dialog/delete-dialog.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SearchitemPipe } from './filter/searchitem.pipe';
     RegistrationComponent,
     ItemsVisualComponent,
     AddItemComponent,
-    SearchitemPipe
+    SearchitemPipe,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { SearchitemPipe } from './filter/searchitem.pipe';
     BrowserAnimationsModule,
     FormsModule
   ],
+  entryComponents: [DeleteDialogComponent],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
                 { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
                 ProductService],
