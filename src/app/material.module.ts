@@ -7,7 +7,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
-import { MatFileUploadModule } from 'angular-material-fileupload';
+import {MatBadgeModule} from '@angular/material/badge';
 
 const modules = [
   MatCardModule,
@@ -22,7 +22,7 @@ const modules = [
   MatSortModule,
   MatTableModule,
   MatDialogModule,
-  MatFileUploadModule,
+  MatBadgeModule,
   MatGridListModule
 ];
 

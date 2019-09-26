@@ -49,4 +49,9 @@ export class ItemsVisualComponent implements OnInit {
     console.log(e);
     
   }
+  cart(_product){
+    this
+            .productService
+            .addProduct(_product);
+  }
 }

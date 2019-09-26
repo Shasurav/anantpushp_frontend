@@ -22,6 +22,8 @@ import { AddItemComponent } from './items/add-item/add-item.component';
 import {ProductService} from './services/api/product.service';
 import { SearchitemPipe } from './filter/searchitem.pipe';
 import { DeleteDialogComponent } from './items/delete-dialog/delete-dialog.component';
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
+import { CartComponent } from './items/cart/cart.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { DeleteDialogComponent } from './items/delete-dialog/delete-dialog.compo
     ItemsVisualComponent,
     AddItemComponent,
     SearchitemPipe,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    NavbarComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

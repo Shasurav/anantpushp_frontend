@@ -1,0 +1,36 @@
+<!-- nav -->
+<mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <mat-nav-list>
+                <a [routerLink]="'/'">AnantPushp</a>
+            </mat-nav-list>
+            <mat-nav-list *ngIf="!currentUser">
+                <a mat-list-item [routerLink]="'/registration'"> Register Here</a>
+            </mat-nav-list>
+            <mat-nav-list *ngIf="!currentUser">
+                <a mat-list-item [routerLink]="'/login'"> Login</a>
+            </mat-nav-list>
+            <span class="spacer"></span>
+            <mat-nav-list *ngIf="currentUser">
+                    <a mat-list-item>
+                            <span matBadge="{{cartCount}}" matBadgeOverlap="false">
+                    <i class="fa fa-shopping-cart fa-2x" [routerLink]="'/cart'" aria-hidden="true"></i>
+                </span>
+                </a>
+            </mat-nav-list>
+            <span class="spacer"></span>
+            <mat-nav-list *ngIf="currentUser">
+                <a mat-list-item (click)="logout()"> Logout</a>
+            </mat-nav-list>
+            <!-- <div *ngIf="currentUser">
+                <a routerLink="/">Home</a>
+                <a (click)="logout()">Logout</a>
+            </div> -->
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" routerLink="/">Home</a>
+                <a class="nav-item nav-link" (click)="logout()">Logout</a>
+            </div>
+        </nav> -->
