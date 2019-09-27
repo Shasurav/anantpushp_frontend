@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+  }
+  
+  tr.mat-footer-row {
+    font-weight: bold;
+  }
+  #img{
+    width: 60px;
+    height: 60px;
+  }
