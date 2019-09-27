@@ -30,4 +30,7 @@ export class ProductService {
     this.Products.push(_product)
     this.cartSubject.next({products:  this.Products});
   }
+  getCardDetails() {
+    return this.Products;
+  }
 }

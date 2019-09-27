@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { ProductService } from '../../services/api/product.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
@@ -12,6 +12,7 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
 export class ItemsVisualComponent implements OnInit {
   itemdetails = {};
   searchItem: string;
+  dialogRef: MatDialogRef<DeleteDialogComponent>;
   constructor(public dialog: MatDialog , private productService: ProductService) { }
 
   ngOnInit() {
@@ -40,14 +41,21 @@ export class ItemsVisualComponent implements OnInit {
     console.log(e);
     
   }
-  delete(e){
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+  openDeleteDialog(e){
+    this.dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: e,
       width: '300px',
-      height: '300px',
-      data : e
+      height: '200px',
+      disableClose: false
     });
-    console.log(e);
-    
+    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete?"
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log("deleted");
+      }
+      this.dialogRef = null;
+    });
   }
   cart(_product){
     this
