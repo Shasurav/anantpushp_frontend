@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +32,10 @@ export class ProductService {
   }
   getCardDetails() {
     return this.Products;
+  }
+  deleteCardDetails(id:String){
+    const i = this.Products.findIndex(e => e.id === id);
+    if(i > -1)
+      this.Products.splice(i, 1);
   }
 }
