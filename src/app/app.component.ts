@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from './services/api/product.service';
 
 
 @Component({
@@ -8,6 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-    constructor() {}
+    constructor(private productService: ProductService) {
+      this.productService.allCartList();
+    }
+
 
 }

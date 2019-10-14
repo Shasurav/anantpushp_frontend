@@ -14,15 +14,15 @@ const routes: Routes = [
   { path : 'login', component : LoginComponent},
   { path : 'registration', component : RegistrationComponent},
   { path : '', component : DashboardComponent 
-  // , canActivate: [AuthGuard]
+  , canActivate: [AuthGuard]
   , children : [
     {path : 'order', component : OrderComponent},
     {path : '', component : ItemsVisualComponent},
     {path : 'cart', component : CartComponent},
-  ]
+    {path : 'add', component: AddItemComponent}
+
+    ] 
   },
-  {path : 'item', component: ItemsVisualComponent},
-  {path : 'add', component: AddItemComponent}
 
 ];
 

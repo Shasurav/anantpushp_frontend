@@ -1,45 +1,36 @@
-<table mat-table [dataSource]="products" *ngIf="products.length != 0">
-  <!-- Image Column -->
+  <table mat-table [dataSource]="products" *ngIf="products.length != 0">
   <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef> Image </th>
-      <td mat-cell *matCellDef="let product"> <img id="img" src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        alt="{{product.NAME}}"> </td>
+      <td mat-cell *matCellDef="let product"> <img id="img" src="http://3.17.148.164{{product.image}}"
+        alt="{{product.name}}"> </td>
     </ng-container>
-  <!-- Item Column -->
   <ng-container matColumnDef="product">
     <th mat-header-cell *matHeaderCellDef> Product </th>
-    <td mat-cell *matCellDef="let product"> {{product.NAME}} </td>
-    <!-- <td mat-footer-cell *matFooterCellDef> Total </td> -->
+    <td mat-cell *matCellDef="let product"> {{product.name}} </td>
   </ng-container>
 
-  <!-- Price Column -->
   <ng-container matColumnDef="price">
     <th mat-header-cell *matHeaderCellDef> Price </th>
-    <td mat-cell *matCellDef="let product"> {{product.Price | currency:'INR':true}} </td>
-    <!-- <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td> -->
+    <td mat-cell *matCellDef="let product"> {{product.price | currency:'INR':true}} </td>
   </ng-container>
 
-   <!-- Amount Column -->
    <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef> Amount </th>
-      <td mat-cell *matCellDef="let product"> {{product.Price * quantity | currency:'INR':true}} </td>
+      <td mat-cell *matCellDef="let product"> {{product.price * quantity | currency:'INR':true}} </td>
     </ng-container>
 
-  <!-- Quantity Column -->
   <ng-container matColumnDef="quantity">
       <th mat-header-cell *matHeaderCellDef> Quantity </th>
       <td mat-cell *matCellDef="let product"> 
-          <button mat-stroked-button (click)="decrement()">-</button>
-          {{quantity}}
-          <button mat-stroked-button (click)="increment()">+</button>
+          <button mat-stroked-button (click)="decrement(product)">-</button>
+          {{product.qty}}
+          <button mat-stroked-button (click)="increment(product)">+</button>
          </td>  
     </ng-container>
-     <!-- Delete Column -->
    <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef> Delete </th>
-      <td mat-cell *matCellDef="let product" (click) = "delete(product.id)"> <i class="material-icons">delete</i> </td>
+      <td mat-cell *matCellDef="let product" (click) = "delete(product)"> <i class="material-icons">delete</i> </td>
     </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr> -->
 </table>

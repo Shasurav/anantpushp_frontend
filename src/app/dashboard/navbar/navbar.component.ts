@@ -14,15 +14,13 @@ export class NavbarComponent implements OnInit {
 
   currentUser: User;
   products = [];
-  cartCount ;
-
-
-  private subscription : Subscription;
+  cartCount: any = 0 ;
+  private subscription: Subscription;
 
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
-        private productService : ProductService
+        private productService: ProductService
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
@@ -31,10 +29,11 @@ export class NavbarComponent implements OnInit {
     this.subscription = this
     .productService
     .CartState
-    .subscribe((state:any)  => {
-        this.products = state.products;
-        this.cartCount = this.products.length;
-        console.log(this.products);
+    .subscribe((state: any)  => {
+      this.cartCount = 0;
+      for (const i in state) {
+       this.cartCount +=  state[i].qty;
+      }
     });
   }
 
@@ -42,4 +41,8 @@ export class NavbarComponent implements OnInit {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
 }
+ ngOnDestroy() {
+        // unsubscribe to ensure no memory leaks
+        this.subscription.unsubscribe();
+    }
 }

@@ -1,0 +1,41 @@
+<div class="centre">
+    <mat-dialog-content>
+        <form [formGroup]="editItem">
+
+            <h1 mat-dialog-title>Hi, Please Edit item</h1>
+            <mat-card-content>
+                    <img mat-card-image id="img" src="http://3.17.148.164{{url}}">
+                </mat-card-content>
+            <p>
+                <input type="text" matInput placeholder="name" formControlName="name">
+            </p>
+
+
+            <p>
+                    <input type="hidden"  placeholder="item_id" formControlName="item_id">
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="number" matInput placeholder="price" formControlName="price">
+                    <mat-error>Please add price for a item</mat-error>
+                </mat-form-field>
+            </p>
+            <!-- <p>
+        <mat-form-field>
+            <input type="file" (change)="onFileChanged($event)" matInput placeholder="image" formControlName="image"/>
+        </mat-form-field>
+        </p> -->
+
+            <!-- <p>
+                <button (click)="fileInput.click()">
+                        <mat-icon>library_add</mat-icon>
+                        <span>Select</span>
+                        <input #fileInput type="file" (change)="onFileChanged($event)" formControlName="image" style="display:none;" />
+                      </button>
+        </p> -->
+            <mat-card-actions class="button">
+                <button mat-raised-button type="submit" color="primary" (click)="edit()">upload</button>
+            </mat-card-actions>
+        </form>
+    </mat-dialog-content>
+</div>

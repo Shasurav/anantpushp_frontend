@@ -19,22 +19,19 @@ export class AddItemComponent implements OnInit {
   name: string;
   price: number;
   image: string;
-  stock: number;
   constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<AddItemComponent>,
               private productService: ProductService ,@Inject(MAT_DIALOG_DATA) public data: any) { this.files = []; }
 
   ngOnInit() {
     this.addItem  = this.formBuilder.group({
-      item_name: ['', [Validators.required]],
+      name: ['', [Validators.required]],
       price: ['', Validators.required],
-      photo: [''],
-      stock: ['', Validators.required]
+      image: ['']
     });
-    console.log(this.data , "dialoge");
+    // console.log(this.data , "dialoge");
     // this.addItem.get('photo').setValue(this.data.Image)
-    this.addItem.get('item_name').setValue(this.data.NAME)
-    this.addItem.get('price').setValue(this.data.Price)
-    this.addItem.get('stock').setValue(this.data.Stock)
+    // this.addItem.get('name').setValue(this.data.name)
+    // this.addItem.get('price').setValue(this.data.price)
 
     
   }
@@ -46,20 +43,17 @@ export class AddItemComponent implements OnInit {
         reader.onload = (e) => {
           this.url = reader.result;
         };
-        this.addItem.get('photo').setValue(this.files);
+        this.addItem.get('image').setValue(this.files);
 
       }
     }
   onUpload() {
     const formData = new FormData();
-    formData.append('photo', this.addItem.get('photo').value);
-    formData.append('item_name', this.addItem.get('item_name').value);
+    formData.append('image', this.addItem.get('image').value);
+    formData.append('name', this.addItem.get('name').value);
     formData.append('price', this.addItem.get('price').value);
-    formData.append('stock', this.addItem.get('stock').value);
 
-    this.productService.create(formData).subscribe(x => {
-      console.log(x);
-    });
+    this.productService.create(formData) ; 
     this.dialogRef.close();
   }
   

@@ -24,6 +24,7 @@ import { SearchitemPipe } from './filter/searchitem.pipe';
 import { DeleteDialogComponent } from './items/delete-dialog/delete-dialog.component';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { CartComponent } from './items/cart/cart.component';
+import { EditItemComponent } from './items/edit-item/edit-item.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CartComponent } from './items/cart/cart.component';
     SearchitemPipe,
     DeleteDialogComponent,
     NavbarComponent,
-    CartComponent
+    CartComponent,
+    EditItemComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import { CartComponent } from './items/cart/cart.component';
     BrowserAnimationsModule,
     FormsModule
   ],
-  entryComponents: [DeleteDialogComponent],
+  entryComponents: [DeleteDialogComponent,EditItemComponent ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
                 { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
                 ProductService],

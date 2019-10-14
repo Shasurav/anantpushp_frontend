@@ -23,29 +23,30 @@ export class RegistrationComponent implements OnInit{
     this.registrationForm = this.formBuilder.group({
       fullname: ['', Validators.required],
       phonenumber: ['',[Validators.required]],
-      address: ['', Validators.required],
       passwordGroup : this.formBuilder.group({
          password: ['', Validators.required],
-         confirmpassword: ['',Validators.required]},{validator:this.passwordMatcher}),
-      ifsc: ['', Validators.required],
-      accountnumber: ['', Validators.required],
-      bankname: ['', Validators.required]
+         confirmpassword: ['',Validators.required]},{validator:this.passwordMatcher})
+      
     });
   }
 
   get f() { return this.registrationForm.controls; }
 
   registration(){
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
+    console.log(this.registrationForm.invalid);
+    console.log(this.registrationForm.value);
+    
+    
     this.submitted = true;
-    if(this.registrationForm.invalid){
-      return;
-    }
+    // if(this.registrationForm.invalid){
+    //   return;
+    // }
     this.loading = true;
     this.authenticationService.registration(this.registrationForm.value)
     .subscribe(data => {console.log(data)
       this.router.navigateByUrl('/login');
-    })
+    });
     
   }
 passwordMatcher: ValidatorFn = (passwordGroup: FormGroup): ValidationErrors | null => {

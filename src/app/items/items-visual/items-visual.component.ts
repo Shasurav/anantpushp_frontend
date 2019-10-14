@@ -3,6 +3,8 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { AddItemComponent } from '../add-item/add-item.component';
 import { ProductService } from '../../services/api/product.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { Subscription } from 'rxjs';
+import { EditItemComponent } from '../edit-item/edit-item.component';
 
 @Component({
   selector: 'app-items-visual',
@@ -10,16 +12,23 @@ import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component'
   styleUrls: ['./items-visual.component.css']
 })
 export class ItemsVisualComponent implements OnInit {
-  itemdetails = {};
+  itemdetails :any = {};
   searchItem: string;
   dialogRef: MatDialogRef<DeleteDialogComponent>;
-  constructor(public dialog: MatDialog , private productService: ProductService) { }
+  subscription : Subscription ;
+
+  constructor(public dialog: MatDialog , private productService: ProductService) { 
+    this.productService.getProducts();
+  }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((res:any) => {
-          this.itemdetails = res;
-          console.log(this.itemdetails);     
-    })
+    this.subscription = this
+    .productService
+    .productState
+    .subscribe((state: any)  => {
+      this.itemdetails = [];
+      this.itemdetails = state;
+    });
   }
 
   openDialog(): void {
@@ -33,7 +42,7 @@ export class ItemsVisualComponent implements OnInit {
     });
   }
   edit(e){
-    const dialogRef = this.dialog.open(AddItemComponent, {
+    const dialogRef = this.dialog.open(EditItemComponent, {
       width: '500px',
       height: '500px',
       data : e
@@ -42,6 +51,8 @@ export class ItemsVisualComponent implements OnInit {
     
   }
   openDeleteDialog(e){
+    console.log(e);
+    
     this.dialogRef = this.dialog.open(DeleteDialogComponent, {
       data: e,
       width: '300px',
@@ -50,12 +61,6 @@ export class ItemsVisualComponent implements OnInit {
     });
     this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete?"
 
-    this.dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        console.log("deleted");
-      }
-      this.dialogRef = null;
-    });
   }
   cart(_product){
     this

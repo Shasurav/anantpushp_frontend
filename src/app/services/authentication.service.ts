@@ -25,26 +25,16 @@ export class AuthenticationService {
 
     registration(registration: Registration) {
         console.log(registration);
-        const body = new HttpParams()
-        .set('contact', registration.phonenumber)
-        .set('password', registration.password)
-        .set('name', registration.fullname)
-        .set('address', registration.address)
-        .set('ifsc', registration.ifsc)
-        .set('account_number', registration.accountnumber)
-        .set('bank_name', registration.bankname);
-        return this.http.post<any>('http://3.17.148.164/user/signup', body)
-        .pipe(map(registration => {
-            console.log(registration);
-            if ( registration.find(x => x.contact === registration.contact)) {
-                this.show = registration.contact;
-                console.log(this.show);
-            }
-            registration.push(body);
-            localStorage.setItem('newUser', JSON.stringify(registration));
+        const body = {
+            contact : registration.phonenumber,
+            password :registration.passwordGroup.password,
+            name : registration.fullname
         }
-        ));
+        // return this.http.post<any>('http://localhost:3000/user/signup', body)
+        return this.http.post<any>('http://3.17.148.164/user/signup', body)
+
       }
+
     login(username: string, password: string) {
         const body = new HttpParams()
         .set('contact', username)

@@ -15,3 +15,6 @@ table {
     padding: 0px;
     background-color: rgb(228, 224, 224);
   }
+  i{
+    cursor: pointer;
+  }
