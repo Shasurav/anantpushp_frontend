@@ -7,6 +7,8 @@ import { User } from '../model/user';
 import { Registration } from '../model/registration';
 // import { error } from 'console';
 import { ok } from 'assert';
+import { Address } from '../model/address';
+import { Bankdetails } from '../model/bankdetails';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -35,6 +37,26 @@ export class AuthenticationService {
 
       }
 
+      addAddress(address: Address) {
+        console.log(address);
+        const body = {
+            contact : address.phonenumber,
+            pincode :address.pincode,
+            address :address.address,
+            name : address.fullname
+        }
+        return this.http.post<any>('http://localhost:3000/user/address', body)
+      }
+      addBankDetails(bankdetails: Bankdetails) {
+        console.log(bankdetails);
+        const body = {
+            ifsc : bankdetails.ifsc,
+            accountnumber :bankdetails.accountnumber,
+            bankname :bankdetails.bankname,
+            name : bankdetails.fullname
+        }
+        return this.http.post<any>('http://localhost:3000/user/bankdetails', body)
+    }
     login(username: string, password: string) {
         const body = new HttpParams()
         .set('contact', username)
@@ -53,7 +75,9 @@ export class AuthenticationService {
                 return user;
             }));
     }
-
+    getUserDetails(){
+        return this.http.get('http://3.17.148.164/user/login');
+    }
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

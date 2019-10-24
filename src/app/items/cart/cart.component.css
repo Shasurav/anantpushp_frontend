@@ -1,3 +1,10 @@
+#placeOrder{
+  margin: 10px;
+  float: right;
+}
+#order{
+  padding: 10px  30px !important;
+}
 table {
     width: 100%;
   }

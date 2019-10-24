@@ -5,6 +5,7 @@ import { ProductService } from '../../services/api/product.service';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { Subscription } from 'rxjs';
 import { EditItemComponent } from '../edit-item/edit-item.component';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-items-visual',
@@ -14,11 +15,14 @@ import { EditItemComponent } from '../edit-item/edit-item.component';
 export class ItemsVisualComponent implements OnInit {
   itemdetails :any = {};
   searchItem: string;
+  is_admin:boolean=false;
   dialogRef: MatDialogRef<DeleteDialogComponent>;
   subscription : Subscription ;
 
-  constructor(public dialog: MatDialog , private productService: ProductService) { 
+  constructor(public dialog: MatDialog , private productService: ProductService,private authenticationservice:AuthenticationService) { 
     this.productService.getProducts();
+    this.authenticationservice.getUserDetails().subscribe(data => {
+    console.log(data)})
   }
 
   ngOnInit() {
@@ -29,6 +33,7 @@ export class ItemsVisualComponent implements OnInit {
       this.itemdetails = [];
       this.itemdetails = state;
     });
+
   }
 
   openDialog(): void {

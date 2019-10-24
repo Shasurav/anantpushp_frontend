@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { User } from 'src/app/model/user';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/api/product.service';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,9 +17,11 @@ export class NavbarComponent implements OnInit {
   products = [];
   cartCount: any = 0 ;
   private subscription: Subscription;
+  
 
     constructor(
         private router: Router,
+        public loaderService: LoaderService,
         private authenticationService: AuthenticationService,
         private productService: ProductService
     ) {

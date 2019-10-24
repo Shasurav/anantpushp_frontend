@@ -8,7 +8,7 @@ import { ProductService } from './services/api/product.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  showLoadingIndicator = true;
     constructor(private productService: ProductService) {
       this.productService.allCartList();
     }
