@@ -9,6 +9,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ItemsVisualComponent } from './items/items-visual/items-visual.component';
 import { AddItemComponent } from './items/add-item/add-item.component';
 import { CartComponent } from './items/cart/cart.component';
+import { AddressComponent } from './address/address.component';
+import { BankdetailsComponent } from './bankdetails/bankdetails.component';
 
 const routes: Routes = [
   { path : 'login', component : LoginComponent},
@@ -19,6 +21,8 @@ const routes: Routes = [
     {path : 'order', component : OrderComponent},
     {path : '', component : ItemsVisualComponent},
     {path : 'cart', component : CartComponent},
+    {path : 'address', component : AddressComponent},
+    {path : 'bankdetails', component : BankdetailsComponent},
     {path : 'add', component: AddItemComponent}
 
     ] 

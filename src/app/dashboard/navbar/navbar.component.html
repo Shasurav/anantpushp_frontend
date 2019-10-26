@@ -1,4 +1,5 @@
 <!-- nav -->
+
 <mat-toolbar color="primary">
         <mat-toolbar-row>
             <mat-nav-list>
@@ -37,3 +38,8 @@
                 <a class="nav-item nav-link" (click)="logout()">Logout</a>
             </div>
         </nav> -->
+  <div *ngIf="loaderService.isLoading | async" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+  <!-- <p *ngIf="!(loaderService.isLoading | async)">
+    Not Loading!
+  </p> -->

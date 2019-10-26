@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/api/product.service';
 import { Products } from 'src/app/model/products';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,7 @@ export class CartComponent implements OnInit {
   displayedColumns: string[];
 
 
-  constructor( private productService: ProductService) {
+  constructor( private productService: ProductService, private router:Router) {
     this.subscription = this
     .productService
     .CartState
@@ -47,9 +48,12 @@ export class CartComponent implements OnInit {
     // });
     this.displayedColumns = ['image', 'product', 'price', 'quantity', 'amount', 'delete'];
   }
-    // getTotalCost() {
-    //   return this.products.map(t => t.price).reduce((acc, value) => acc + value, 0);
-
+    getTotalCost() {
+      return this.products.map(t => t.price * t.qty).reduce((acc, value) => acc + value, 0);
+    }
+    navigate(){
+      this.router.navigate(['/address']);
+    }
   // this.products: Transaction[]
     // this.subscription = this
     // .productService

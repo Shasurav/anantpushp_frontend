@@ -25,6 +25,10 @@ import { DeleteDialogComponent } from './items/delete-dialog/delete-dialog.compo
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { CartComponent } from './items/cart/cart.component';
 import { EditItemComponent } from './items/edit-item/edit-item.component';
+import { LoaderInterceptor } from './services/loader.interceptor';
+import { LoaderService } from './services/loader.service';
+import { AddressComponent } from './address/address.component';
+import { BankdetailsComponent } from './bankdetails/bankdetails.component';
 
 
 @NgModule({
@@ -42,7 +46,9 @@ import { EditItemComponent } from './items/edit-item/edit-item.component';
     DeleteDialogComponent,
     NavbarComponent,
     CartComponent,
-    EditItemComponent
+    EditItemComponent,
+    AddressComponent,
+    BankdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +61,9 @@ import { EditItemComponent } from './items/edit-item/edit-item.component';
   ],
   entryComponents: [DeleteDialogComponent,EditItemComponent ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+              { provide: HTTP_INTERCEPTORS,useClass: LoaderInterceptor,multi: true},
                 { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-                ProductService],
+                ProductService,LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
