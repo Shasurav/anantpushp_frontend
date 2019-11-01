@@ -43,7 +43,7 @@ export class AuthenticationService {
             contact : address.phonenumber,
             pincode :address.pincode,
             address :address.address,
-            name : address.fullname
+            name : address.name
         }
         return this.http.post<any>('http://localhost:3000/user/address', body)
       }
@@ -51,9 +51,9 @@ export class AuthenticationService {
         console.log(bankdetails);
         const body = {
             ifsc : bankdetails.ifsc,
-            accountnumber :bankdetails.accountnumber,
-            bankname :bankdetails.bankname,
-            name : bankdetails.fullname
+            accountnumber :bankdetails.account,
+            bankname :bankdetails.bank,
+            name : bankdetails.name
         }
         return this.http.post<any>('http://localhost:3000/user/bankdetails', body)
     }

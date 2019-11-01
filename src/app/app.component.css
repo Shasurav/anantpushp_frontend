@@ -1,0 +1,13 @@
+.mat-progress-spinner {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.mat-spinner{
+    z-index: 999;
+    opacity: 0.4;
+}
+/* .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: lightgrey !important;
+} */

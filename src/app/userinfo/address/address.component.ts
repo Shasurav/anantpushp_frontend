@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +18,7 @@ export class AddressComponent implements OnInit {
 
   ngOnInit() {
     this.addressForm = this.formBuilder.group({
-      username: ['',Validators.required],
+      name: ['',Validators.required],
       contact: ['', Validators.required],
       pincode: ['', Validators.required],
       address: ['', Validators.required]

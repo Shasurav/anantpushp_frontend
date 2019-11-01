@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,10 +18,10 @@ export class BankdetailsComponent implements OnInit {
 
   ngOnInit() {
     this.bankForm = this.formBuilder.group({
-      username: ['',Validators.required],
+      name: ['',Validators.required],
       ifsc: ['', Validators.required],
-      accountnumber: ['', Validators.required],
-      bankname: ['', Validators.required]
+      accountNo: ['', Validators.required],
+      bank: ['', Validators.required]
     })
   }
   get f() { return this.bankForm.controls; }
