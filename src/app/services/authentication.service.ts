@@ -7,8 +7,7 @@ import { User } from '../model/user';
 import { Registration } from '../model/registration';
 // import { error } from 'console';
 import { ok } from 'assert';
-import { Address } from '../model/address';
-import { Bankdetails } from '../model/bankdetails';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -29,34 +28,13 @@ export class AuthenticationService {
         console.log(registration);
         const body = {
             contact : registration.phonenumber,
-            password :registration.passwordGroup.password,
+            password : registration.passwordGroup.password,
             name : registration.fullname
-        }
+        };
         // return this.http.post<any>('http://localhost:3000/user/signup', body)
-        return this.http.post<any>('http://3.17.148.164/user/signup', body)
+        return this.http.post<any>('http://3.17.148.164/user/signup', body);
 
       }
-
-      addAddress(address: Address) {
-        console.log(address);
-        const body = {
-            contact : address.phonenumber,
-            pincode :address.pincode,
-            address :address.address,
-            name : address.name
-        }
-        return this.http.post<any>('http://localhost:3000/user/address', body)
-      }
-      addBankDetails(bankdetails: Bankdetails) {
-        console.log(bankdetails);
-        const body = {
-            ifsc : bankdetails.ifsc,
-            accountnumber :bankdetails.account,
-            bankname :bankdetails.bank,
-            name : bankdetails.name
-        }
-        return this.http.post<any>('http://localhost:3000/user/bankdetails', body)
-    }
     login(username: string, password: string) {
         const body = new HttpParams()
         .set('contact', username)
@@ -75,7 +53,7 @@ export class AuthenticationService {
                 return user;
             }));
     }
-    getUserDetails(){
+    getUserDetails() {
         return this.http.get('http://3.17.148.164/user/login');
     }
     logout() {

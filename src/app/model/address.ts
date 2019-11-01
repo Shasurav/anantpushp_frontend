@@ -1,6 +1,6 @@
 export class Address {
     name : string;
-    phonenumber: string;
+    contact: string;
     pincode : string;
     address : string;
 }

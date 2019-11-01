@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
-
+import { Address } from '../../model/address';
+import { Bankdetails } from '../../model/bankdetails';
 @Injectable({
   providedIn: 'root'
 })
@@ -107,6 +108,44 @@ export class ProductService {
       this.cartSubject.next(this.cart);
      }
     });
+  }  
+  addAddress(address: Address) {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    console.log(address);
+    const body = {
+            contact : address.contact,
+            pincode : address.pincode,
+            address : address.address,
+            name : address.name
+        };
+    console.log(body);
+
+    return this.http.post<any>('http://3.17.148.164/helper/address', {body,user});
+      }
+      addBankDetails(bankdetails: Bankdetails) {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    console.log(bankdetails);
+    const body = {
+            ifsc : bankdetails.ifsc,
+            accountnumber : bankdetails.accountNo,
+            bankname : bankdetails.bank,
+            name : bankdetails.name
+        };
+    console.log(body);
+
+    return this.http.post<any>('http://3.17.148.164/helper/bank',{ body,user});
+    }
+  getAddress() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    return this.http.post('http://3.17.148.164/helper/getAddress', user);
+  }
+  getBankDetails() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    return this.http.post('http://3.17.148.164/helper/getBankDetails', user);
   }
   getCardDetails() {
     return this.cart;
