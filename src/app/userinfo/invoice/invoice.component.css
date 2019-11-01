@@ -1,0 +1,17 @@
+#orderSummary{
+    background-color:white;
+    padding: 50px;
+}
+table {
+    width: 100%;
+  }
+
+  tr.totalRow, tr.subTotalRow {
+    font-weight: bolder;
+  }
+  td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+    padding: 15px;
+    border-bottom-width: 0.5px;
+    /* border-bottom-style: solid; */
+}
+  

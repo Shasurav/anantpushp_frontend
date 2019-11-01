@@ -1,4 +1,4 @@
-<mat-card class="mat-elevation-z7">
+<mat-card>
         <mat-card-header>
             <mat-card-title>Add Bank details here!</mat-card-title>
         </mat-card-header>
@@ -6,8 +6,8 @@
             <form [formGroup]="bankForm" (ngSubmit)="onSubmit()">
                 <p>
                     <mat-form-field>
-                        <input type="text" matInput placeholder="Name" formControlName="username">
-                        <mat-error *ngIf="bankForm.get('username').errors?.required">Name is required</mat-error>
+                        <input type="text" matInput placeholder="Name" formControlName="name">
+                        <mat-error *ngIf="bankForm.get('name').errors?.required">Name is required</mat-error>
                     </mat-form-field>
                 </p>
                 <p>
@@ -18,14 +18,14 @@
                 </p>
                 <p>
                     <mat-form-field>
-                        <input type="text" matInput placeholder="Account Number" formControlName="accountnumber">
-                        <mat-error *ngIf="bankForm.get('accountnumber').errors?.required">account number is required</mat-error>
+                        <input type="text" matInput placeholder="Account Number" formControlName="accountNo">
+                        <mat-error *ngIf="bankForm.get('accountNo').errors?.required">account number is required</mat-error>
                     </mat-form-field>
                 </p>
                 <p>
                     <mat-form-field>
-                        <input type="text" matInput placeholder="Bank Name" formControlName="bankname">
-                        <mat-error *ngIf="bankForm.get('bankname').errors?.required">bank name is required</mat-error>
+                        <input type="text" matInput placeholder="Bank Name" formControlName="bank">
+                        <mat-error *ngIf="bankForm.get('bank').errors?.required">bank name is required</mat-error>
                     </mat-form-field>
                 </p>
                 <mat-card-actions class="button">

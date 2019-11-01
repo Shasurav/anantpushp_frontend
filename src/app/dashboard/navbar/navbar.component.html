@@ -1,5 +1,3 @@
-<!-- nav -->
-
 <mat-toolbar color="primary">
         <mat-toolbar-row>
             <mat-nav-list>
@@ -26,20 +24,5 @@
             <mat-nav-list *ngIf="currentUser">
                 <a mat-list-item (click)="logout()"> Logout</a>
             </mat-nav-list>
-            <!-- <div *ngIf="currentUser">
-                <a routerLink="/">Home</a>
-                <a (click)="logout()">Logout</a>
-            </div> -->
         </mat-toolbar-row>
     </mat-toolbar>
-    <!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" routerLink="/">Home</a>
-                <a class="nav-item nav-link" (click)="logout()">Logout</a>
-            </div>
-        </nav> -->
-  <div *ngIf="loaderService.isLoading | async" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-
-  <!-- <p *ngIf="!(loaderService.isLoading | async)">
-    Not Loading!
-  </p> -->

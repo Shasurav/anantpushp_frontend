@@ -1,6 +1,6 @@
 export class Bankdetails {
-    fullname : string;
+    name : string;
     ifsc: string;
-    accountnumber : string;
-    bankname : string;
+    account : string;
+    bank : string;
 }

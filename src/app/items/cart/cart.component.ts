@@ -32,11 +32,12 @@ export class CartComponent implements OnInit {
 
     });
     this.getRefreshData();
+    console.log(this.products)
   }
 
   ngOnInit() {
   }
-  getRefreshData() {
+  public getRefreshData() {
     this.products = this.productService.getCardDetails();
 
     // this.cartCount = this.products.length;
@@ -52,7 +53,7 @@ export class CartComponent implements OnInit {
       return this.products.map(t => t.price * t.qty).reduce((acc, value) => acc + value, 0);
     }
     navigate(){
-      this.router.navigate(['/address']);
+      this.router.navigate(['/info']);
     }
   // this.products: Transaction[]
     // this.subscription = this

@@ -27,8 +27,10 @@ import { CartComponent } from './items/cart/cart.component';
 import { EditItemComponent } from './items/edit-item/edit-item.component';
 import { LoaderInterceptor } from './services/loader.interceptor';
 import { LoaderService } from './services/loader.service';
-import { AddressComponent } from './address/address.component';
-import { BankdetailsComponent } from './bankdetails/bankdetails.component';
+import { AddressComponent } from './userinfo/address/address.component';
+import { BankdetailsComponent } from './userinfo/bankdetails/bankdetails.component';
+import { InfoComponent } from './userinfo/info/info.component';
+import { InvoiceComponent } from './userinfo/invoice/invoice.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { BankdetailsComponent } from './bankdetails/bankdetails.component';
     CartComponent,
     EditItemComponent,
     AddressComponent,
-    BankdetailsComponent
+    BankdetailsComponent,
+    InfoComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from './services/api/product.service';
+import { LoaderService } from './services/loader.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { ProductService } from './services/api/product.service';
 })
 export class AppComponent {
   showLoadingIndicator = true;
-    constructor(private productService: ProductService) {
+    constructor(private productService: ProductService, public loaderService: LoaderService,) {
       this.productService.allCartList();
     }
 

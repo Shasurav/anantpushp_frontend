@@ -1,10 +1,11 @@
-:host {
+/* :host {
     display: flex;
-    justify-content: center;
-    margin: 10px 0px;
-  }
+    /* justify-content: center; 
+    margin-top: 20px;
+    margin-left: 50px;
+  } */
   .mat-card{
-    border-radius: 30px;
+    box-shadow: none;
 }
   .mat-form-field {
     width: 100%;
