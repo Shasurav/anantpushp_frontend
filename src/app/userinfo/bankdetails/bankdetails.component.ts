@@ -39,7 +39,7 @@ export class BankdetailsComponent implements OnInit {
       this.loading = true;
       this.product_service.addBankDetails(this.bankForm.value)
       .subscribe(data => {console.log(data);
-        this.router.navigate(['/order']);
+        // this.router.navigate(['/order']);
       });
       
     }

@@ -36,6 +36,9 @@ export class AddressComponent implements OnInit {
       // if(this.registrationForm.invalid){
       //   return;
       // }
+      if(this.addressForm.invalid){
+        return;
+      }
       this.loading = true;
       this.product_service.addAddress(this.addressForm.value)
       .subscribe(data => {console.log(data)
