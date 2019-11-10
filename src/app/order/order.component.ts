@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { ProductService } from '../services/api/product.service';
 
 export interface UserData {
   id: string;
@@ -32,7 +33,7 @@ export class OrderComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  constructor() { 
+  constructor( private productService : ProductService) { 
     // Create 100 users
     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
@@ -52,6 +53,10 @@ export class OrderComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  getOrder(){
+    this.productService.getOrderDetails();
+  }
+
 }
 
 function createNewUser(id: number): UserData {
@@ -64,4 +69,6 @@ function createNewUser(id: number): UserData {
     progress: Math.round(Math.random() * 100).toString(),
     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
   };
+
+  
 }

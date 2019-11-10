@@ -164,4 +164,25 @@ export class ProductService {
     return this.CartState ;
 
   }
+
+newOrder(productList , address , bankDetails){
+  console.log(productList , address , bankDetails);
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+
+  return this.http.post('http://3.17.148.164/order/newOrder', { productList , address , bankDetails , user})
+  .subscribe(data => console.log(data)
+  )
+}
+
+  getOrderDetails() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    return this.http.post('http://3.17.148.164/order/getOrder', user).subscribe((res: any) => {
+      if (res.product.length < 1 ) {
+     } else {
+      this.cart = res.product[0].cartDetails;
+      this.cartSubject.next(this.cart);
+     }
+    });
+  } 
 }

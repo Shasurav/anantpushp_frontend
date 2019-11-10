@@ -41,6 +41,7 @@ export class InvoiceComponent implements OnInit {
     this.selectedBank = JSON.parse(localStorage.getItem('bank'));
     }
     placeOrder(){
-      this.router.navigate(['/order']);
+    this.productservice.newOrder(this.products ,this.selectedAddress , this.selectedBank );
+      // this.router.navigate(['/order']);
     }
 }
