@@ -11,7 +11,7 @@ import { AddItemComponent } from './items/add-item/add-item.component';
 import { CartComponent } from './items/cart/cart.component';
 import { AddressComponent } from './userinfo/address/address.component';
 import { BankdetailsComponent } from './userinfo/bankdetails/bankdetails.component';
-import { InfoComponent } from './userinfo/info/info.component';
+import { InvoiceComponent } from './userinfo/invoice/invoice.component';
 
 const routes: Routes = [
   { path : 'login', component : LoginComponent},
@@ -23,7 +23,7 @@ const routes: Routes = [
     {path : '', component : ItemsVisualComponent},
     {path : 'cart', component : CartComponent},
     {path : 'address', component : AddressComponent},
-    {path: 'info', component: InfoComponent},
+    {path: 'invoice', component: InvoiceComponent},
     {path : 'bankdetails', component : BankdetailsComponent},
     {path : 'add', component: AddItemComponent}
 

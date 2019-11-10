@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {MatCardModule, MatInputModule, 
     MatButtonModule , MatIconModule, MatSidenavModule, 
-    MatListModule,MatDividerModule,  MatDialogModule,MatGridListModule, MatCardImage, MatCardTitle,
+    MatListModule,MatDividerModule, MatRadioModule, MatDialogModule,MatGridListModule, MatCardImage, MatCardTitle, MatRadioButton,
   } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -14,6 +14,7 @@ const modules = [
   MatCardModule,
   MatInputModule,
   MatButtonModule,
+  MatRadioModule,
   MatToolbarModule,
   MatIconModule,
   MatSidenavModule,

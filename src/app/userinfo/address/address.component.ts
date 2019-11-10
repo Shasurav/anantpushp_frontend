@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/api/product.service';
+import { Address } from 'src/app/model/address';
 
 @Component({
   selector: 'app-address',
@@ -11,10 +12,14 @@ import { ProductService } from 'src/app/services/api/product.service';
 })
 export class AddressComponent implements OnInit {
   addressForm:FormGroup;
+  address: any;
+  newAddress:Address[] =[];
+  selectedAddress:[];
   submitted: boolean =false;
   loading: boolean=false;
   error: any ='';
-
+  selection : any ;
+  header:string;
   constructor(private formBuilder: FormBuilder, 
     private router:Router,private authenticationService: AuthenticationService ,
     private product_service : ProductService) { }
@@ -26,6 +31,8 @@ export class AddressComponent implements OnInit {
       pincode: ['', Validators.required],
       address: ['', Validators.required]
     })
+    this.getDetails();
+    this.header="Please select any address from below."
   }
   get f() { return this.addressForm.controls; }
 
@@ -33,9 +40,6 @@ export class AddressComponent implements OnInit {
       console.log(this.addressForm.invalid);
       console.log(this.addressForm.value);
       this.submitted = true;
-      // if(this.registrationForm.invalid){
-      //   return;
-      // }
       if(this.addressForm.invalid){
         return;
       }
@@ -43,14 +47,27 @@ export class AddressComponent implements OnInit {
       this.product_service.addAddress(this.addressForm.value)
       .subscribe(data => {console.log(data)
       });
-      
+      console.log(this.selection);
+      this.getDetails();
     };
 
-    getDetails (){
+    getDetails(){
       this.product_service.getAddress()
-      .subscribe(data => console.log(data)
+      .subscribe(data => {
+        this.address=data;
+        this.newAddress = this.address.result[0].address_details;
+        console.log(this.newAddress)
+        }
       )
     }
+    selectedAddess(){
+      if(this.selection){
+        console.log("selected");
+        localStorage.setItem('address',JSON.stringify(this.selection));
+        this.router.navigate(['/bankdetails']);
+      }
+   }
+
     // navigate(){
     //   this.router.navigate(['/bankdetails']); 
     // }

@@ -29,8 +29,8 @@ import { LoaderInterceptor } from './services/loader.interceptor';
 import { LoaderService } from './services/loader.service';
 import { AddressComponent } from './userinfo/address/address.component';
 import { BankdetailsComponent } from './userinfo/bankdetails/bankdetails.component';
-import { InfoComponent } from './userinfo/info/info.component';
 import { InvoiceComponent } from './userinfo/invoice/invoice.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -51,7 +51,6 @@ import { InvoiceComponent } from './userinfo/invoice/invoice.component';
     EditItemComponent,
     AddressComponent,
     BankdetailsComponent,
-    InfoComponent,
     InvoiceComponent
   ],
   imports: [
@@ -61,7 +60,8 @@ import { InvoiceComponent } from './userinfo/invoice/invoice.component';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   entryComponents: [DeleteDialogComponent,EditItemComponent ],
   providers: [  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

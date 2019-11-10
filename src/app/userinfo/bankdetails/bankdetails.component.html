@@ -1,3 +1,28 @@
+<mat-card-actions class="button">
+        <button mat-raised-button (click)="selectedBank()" color="primary">Select bank details</button>
+    </mat-card-actions>
+    <mat-card-title> Please select bank details from below.</mat-card-title>
+    <mat-grid-list cols='4' id="address">
+        <mat-radio-group [(ngModel)]="selection" #radioGroup="matRadioGroup">
+            <mat-grid-tile *ngFor="let bank of newBankdetails  let i=index">
+                <mat-card>
+                    <mat-card-content>
+                        <label>Name:</label> {{bank.name}}
+                    </mat-card-content>
+                    <mat-card-content>
+                        <label>Bank name:</label> {{bank.bank_name}}
+                    </mat-card-content>
+                    <mat-card-content>
+                        <label>IFSC:</label> {{bank.ifsc}}
+                    </mat-card-content>
+                    <mat-card-content>
+                        <label>Account number:</label> {{bank.account_number}}
+                    </mat-card-content>
+                    <mat-radio-button [value]="bank">select bank details</mat-radio-button>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-radio-group>
+    </mat-grid-list>
 <mat-card>
         <mat-card-header>
             <mat-card-title>Add Bank details here!</mat-card-title>
@@ -31,9 +56,9 @@
                 <mat-card-actions class="button">
                     <button mat-raised-button type="submit" color="primary">Submit bank details & Buy</button>
                 </mat-card-actions>
-                <mat-card-actions class="button">
-                    <button mat-raised-button (click)="getDetails()" color="primary">getDetails</button>
-                </mat-card-actions>
             </form>
         </mat-card-content>
+        <mat-card-actions class="button">
+                <button mat-raised-button (click)="getDetails()" color="primary">getDetails</button>
+            </mat-card-actions>
     </mat-card>

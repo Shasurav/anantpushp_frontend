@@ -53,7 +53,7 @@ export class CartComponent implements OnInit {
       return this.products.map(t => t.price * t.qty).reduce((acc, value) => acc + value, 0);
     }
     navigate(){
-      this.router.navigate(['/info']);
+      this.router.navigate(['/address']);
     }
   // this.products: Transaction[]
     // this.subscription = this
