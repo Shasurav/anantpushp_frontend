@@ -14,7 +14,9 @@ export class BankdetailsComponent implements OnInit {
   submitted: boolean =false;
   loading: boolean=false;
   error: any ='';
-
+  bankdetails:any;
+newBankdetails:[];
+selection:any;
   constructor(private formBuilder: FormBuilder,
     private router:Router, private authenticationService: AuthenticationService,
     private product_service: ProductService) { }
@@ -26,6 +28,7 @@ export class BankdetailsComponent implements OnInit {
       accountNo: ['', Validators.required],
       bank: ['', Validators.required]
     })
+    this.getDetails();
   }
   get f() { return this.bankForm.controls; }
 
@@ -41,13 +44,23 @@ export class BankdetailsComponent implements OnInit {
       .subscribe(data => {console.log(data);
         // this.router.navigate(['/order']);
       });
-      
+      this.getDetails();
     }
     getDetails (){
       this.product_service.getBankDetails()
-      .subscribe(data => console.log(data)
+      .subscribe(data => {
+      this.bankdetails=data;
+      this.newBankdetails = this.bankdetails.result[0].bank_details;
+      console.log(this.newBankdetails)}
       )
     }
+    selectedBank(){
+      if(this.selection){
+        console.log("selected");
+        localStorage.setItem('bank',JSON.stringify(this.selection));
+        this.router.navigate(['/invoice']);
+      }
+   }
     // navigate(){
     //   this.router.navigate(['/order']);
     // }

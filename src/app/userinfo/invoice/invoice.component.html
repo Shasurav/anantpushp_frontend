@@ -1,7 +1,37 @@
 <div id="orderSummary" *ngIf="products.length != 0">
-    <mat-card-title>Order summary</mat-card-title>
-  <!-- <div>order number</div> -->
-  <table mat-table [dataSource]="products" >
+  <mat-card-title>Order summary</mat-card-title>
+  
+  <mat-card>
+      <mat-card-title>Address</mat-card-title>
+      <mat-card-content>
+          <label>Name:</label> {{selectedAddress.name}}
+      </mat-card-content>
+      <mat-card-content>
+          <label>mobile:</label> {{selectedAddress.mobile}}
+      </mat-card-content>
+      <mat-card-content>
+          <label>address:</label> {{selectedAddress.address}}
+      </mat-card-content>
+      <mat-card-content>
+          <label>pincode:</label> {{selectedAddress.pincode}}
+      </mat-card-content>
+  </mat-card>
+  <mat-card>
+      <mat-card-title>Bank details</mat-card-title>
+      <mat-card-content>
+          <label>Name:</label> {{selectedBank.name}}
+      </mat-card-content>
+      <mat-card-content>
+          <label>Bank name:</label> {{selectedBank.bank_name}}
+      </mat-card-content>
+      <mat-card-content>
+          <label>IFSC:</label> {{selectedBank.ifsc}}
+      </mat-card-content>
+      <mat-card-content>
+          <label>Account number:</label> {{selectedBank.account_number}}
+      </mat-card-content>
+  </mat-card>
+  <table mat-table [dataSource]="products">
     <!-- Item Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Item </th>
@@ -16,35 +46,35 @@
       <td mat-footer-cell *matFooterCellDef> {{getSubTotalCost() | currency:'INR':true}} </td>
     </ng-container>
 
-     <!-- set footer for discount amount-->
-     <ng-container matColumnDef="discountTitle">
-        <td mat-footer-cell *matFooterCellDef class="mobile-hide">Discount</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="discountAmount">
-        <td mat-footer-cell *matFooterCellDef class="mobile-value"> {{ discount() | currency:'INR':true }}
-        </td>
-      </ng-container>
+    <!-- set footer for discount amount-->
+    <ng-container matColumnDef="discountTitle">
+      <td mat-footer-cell *matFooterCellDef class="mobile-hide">Discount</td>
+    </ng-container>
 
-      <!-- set footer for gst amount-->
-     <ng-container matColumnDef="gstTitle">
-        <td mat-footer-cell *matFooterCellDef class="mobile-hide">GST</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="gstAmount">
-        <td mat-footer-cell *matFooterCellDef class="mobile-value"> {{ gst() | currency:'INR':true }}
-        </td>
-      </ng-container>
-  
-      <!-- set footer for total amount-->
-      <ng-container matColumnDef="totalAmountTitle">
-        <td mat-footer-cell *matFooterCellDef class="mobile-hide bold">Total</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="totalAmount">
-        <td mat-footer-cell *matFooterCellDef class="mobile-value bold"> {{ getTotalCost() | currency:'INR':true }}
-        </td>
-      </ng-container>
+    <ng-container matColumnDef="discountAmount">
+      <td mat-footer-cell *matFooterCellDef class="mobile-value"> {{ discount() | currency:'INR':true }}
+      </td>
+    </ng-container>
+
+    <!-- set footer for gst amount-->
+    <ng-container matColumnDef="gstTitle">
+      <td mat-footer-cell *matFooterCellDef class="mobile-hide">GST</td>
+    </ng-container>
+
+    <ng-container matColumnDef="gstAmount">
+      <td mat-footer-cell *matFooterCellDef class="mobile-value"> {{ gst() | currency:'INR':true }}
+      </td>
+    </ng-container>
+
+    <!-- set footer for total amount-->
+    <ng-container matColumnDef="totalAmountTitle">
+      <td mat-footer-cell *matFooterCellDef class="mobile-hide bold">Total</td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalAmount">
+      <td mat-footer-cell *matFooterCellDef class="mobile-value bold"> {{ getTotalCost() | currency:'INR':true }}
+      </td>
+    </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -53,4 +83,7 @@
     <tr mat-footer-row *matFooterRowDef="displayedGstColumns" class="gstRow"></tr>
     <tr mat-footer-row *matFooterRowDef="displayedTotalColumns" class="totalRow"></tr>
   </table>
+  <mat-card-actions class="button">
+      <button mat-raised-button (click)="placeOrder()" color="primary">Place order</button>
+  </mat-card-actions>
 </div>

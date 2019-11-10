@@ -15,7 +15,7 @@
   mat-card-header,
   mat-card-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
   }
 
   .error {
@@ -34,4 +34,7 @@
     cursor: pointer;
     background-color: transparent;
     text-decoration: underline;
+  }
+  #address{
+    border-radius: 1px;;
   }
