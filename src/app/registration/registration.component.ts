@@ -23,6 +23,7 @@ export class RegistrationComponent implements OnInit{
     this.registrationForm = this.formBuilder.group({
       fullname: ['', Validators.required],
       phonenumber: ['',[Validators.required]],
+      refferalCode : ['',[Validators.required]],
       passwordGroup : this.formBuilder.group({
          password: ['', Validators.required],
          confirmpassword: ['',Validators.required]},{validator:this.passwordMatcher})

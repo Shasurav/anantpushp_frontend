@@ -20,6 +20,11 @@
                     Please enter 10 digits phone number.</mat-error>
             </mat-form-field>
             <br>
+            <mat-form-field>
+                <input matInput class="form-control" placeholder="refferal" formControlName="refferalCode">
+                <mat-error *ngIf="registrationForm.get('refferalCode').errors?.required">Refferal Code is required</mat-error>
+            </mat-form-field>
+            <br>
             <div formGroupName="passwordGroup">
                 <mat-form-field>
                     <input matInput class="form-control" placeholder="Password" formControlName="password"

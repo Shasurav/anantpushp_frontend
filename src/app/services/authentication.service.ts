@@ -29,10 +29,11 @@ export class AuthenticationService {
         const body = {
             contact : registration.phonenumber,
             password : registration.passwordGroup.password,
+            refferalCode : registration.refferalCode,
             name : registration.fullname
         };
-        // return this.http.post<any>('http://localhost:3000/user/signup', body)
-        return this.http.post<any>('http://3.17.148.164/user/signup', body);
+        return this.http.post<any>('http://localhost:3000/user/signup', body)
+        // return this.http.post<any>('http://3.17.148.164/user/signup', body);
 
       }
     login(username: string, password: string) {
